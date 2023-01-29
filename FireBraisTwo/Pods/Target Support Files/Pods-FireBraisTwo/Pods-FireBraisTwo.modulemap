@@ -1,0 +1,6 @@
+framework module Pods_FireBraisTwo {
+  umbrella header "Pods-FireBraisTwo-umbrella.h"
+
+  export *
+  module * { export * }
+}
