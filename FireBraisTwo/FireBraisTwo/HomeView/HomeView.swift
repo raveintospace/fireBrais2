@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import FirebaseAnalytics
+import FirebaseAuth
 
 final class HomeView: UIViewController {
     

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 
 enum ProviderType: String {
     case basic
@@ -26,16 +27,6 @@ final class LogedView: UIViewController {
     
     var provider: ProviderType?
     var email: String?
-
-//    init(email: String, provider: ProviderType) {   // mirar si aixo es pot passar en crear el loged view
-//        self.email = email
-//        self.provider = provider
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
     
     // MARK: - Lifecycle
 
