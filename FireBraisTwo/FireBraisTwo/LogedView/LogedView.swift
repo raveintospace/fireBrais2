@@ -21,6 +21,7 @@ final class LogedView: UIViewController {
     var delegate: LogoutProtocol!
     
     var safeArea: UILayoutGuide!
+    let leftParagraphStyle = NSMutableParagraphStyle()
     let emailLabel = UILabel()
     let providerLabel = UILabel()
     let addressTextField = UITextField()
@@ -46,6 +47,7 @@ extension LogedView: LogedViewProtocol {
         self.navigationItem.title = "Loged in view"
         self.navigationItem.setHidesBackButton(true, animated: false)
         safeArea = view.layoutMarginsGuide
+        leftParagraphStyle.alignment = .left
         setupemailLabel()
         setupProviderLabel()
         setupAddressTextField()
@@ -89,7 +91,8 @@ extension LogedView: LogedViewProtocol {
         addressTextField.configureLoginTextField()
         addressTextField.attributedPlaceholder = NSAttributedString(
             string: "Enter your address",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray, NSAttributedString.Key.paragraphStyle: leftParagraphStyle])
+        addressTextField.textAlignment = .left
         addressTextField.autocorrectionType = .no
     }
         
