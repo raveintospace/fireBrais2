@@ -222,6 +222,7 @@
 				341530C62986E37500AD7277 /* Sources */,
 				341530C72986E37500AD7277 /* Frameworks */,
 				341530C82986E37500AD7277 /* Resources */,
+				17EC3D371BA6D119B25A4A4B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -311,6 +312,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		17EC3D371BA6D119B25A4A4B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FireBraisTwo/Pods-FireBraisTwo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FireBraisTwo/Pods-FireBraisTwo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FireBraisTwo/Pods-FireBraisTwo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		304C816C214D261F5F81FD44 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

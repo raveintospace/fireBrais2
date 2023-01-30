@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import FirebaseAnalytics
 import FirebaseAuth
+import GoogleSignIn
 
 final class HomeView: UIViewController {
     
@@ -136,6 +137,8 @@ extension HomeView: HomeViewProtocol {
         googleButton.setImage(UIImage(named: "Google_icon"), for: .normal)
         googleButton.setTitleColor(.blue, for: .normal)
         googleButton.backgroundColor = .white
+        
+        googleButton.addTarget(self, action: #selector(googleButtonAction), for: .touchUpInside)
     }
     
     // MARK: - UIButtons Actions
@@ -174,6 +177,10 @@ extension HomeView: HomeViewProtocol {
                 }
             }
         }
+    }
+    
+    @objc func googleButtonAction() {
+        print("Google fato")
     }
     
     // MARK: - Load data from login and go to LogedView

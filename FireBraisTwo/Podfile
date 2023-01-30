@@ -5,4 +5,7 @@ target 'FireBraisTwo' do
 
   use_frameworks!
 
+pod 'FirebaseAuth'
+pod 'GoogleSignIn'
+
 end

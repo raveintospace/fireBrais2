@@ -23,6 +23,8 @@ final class LogedView: UIViewController {
     var safeArea: UILayoutGuide!
     let emailLabel = UILabel()
     let providerLabel = UILabel()
+    let addressTextField = UITextField()
+    let phoneTextField = UITextField()
     let logoutButton = UIButton()
     
     var provider: ProviderType?
@@ -46,6 +48,8 @@ extension LogedView: LogedViewProtocol {
         safeArea = view.layoutMarginsGuide
         setupemailLabel()
         setupProviderLabel()
+        setupAddressTextField()
+        setupPhoneTextField()
         setupLogoutButton()
     }
     
@@ -73,11 +77,31 @@ extension LogedView: LogedViewProtocol {
         providerLabel.layer.cornerRadius = 10
     }
     
+    func setupAddressTextField() {
+        view.addSubview(addressTextField)
+        
+        addressTextField.translatesAutoresizingMaskIntoConstraints = false
+        addressTextField.topAnchor.constraint(equalTo: providerLabel.bottomAnchor, constant: 3).isActive = true
+        addressTextField.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
+        addressTextField.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.75).isActive = true
+        addressTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+     
+        addressTextField.configureLoginTextField()
+        addressTextField.attributedPlaceholder = NSAttributedString(
+            string: "Enter your address",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        addressTextField.autocorrectionType = .no
+    }
+        
+    func setupPhoneTextField() {
+        
+    }
+    
     func setupLogoutButton() {
         view.addSubview(logoutButton)
         
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
-        logoutButton.topAnchor.constraint(equalTo: providerLabel.bottomAnchor, constant: 6).isActive = true
+        logoutButton.topAnchor.constraint(equalTo: addressTextField.bottomAnchor, constant: 6).isActive = true
         logoutButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
         logoutButton.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.75).isActive = true
         logoutButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
