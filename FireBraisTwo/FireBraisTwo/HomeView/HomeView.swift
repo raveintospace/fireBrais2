@@ -65,7 +65,7 @@ extension HomeView: HomeViewProtocol {
         emailTextField.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.75).isActive = true
         emailTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        emailTextField.configureLoginTextField()
+        emailTextField.configureStandardUITextField()
         emailTextField.attributedPlaceholder = NSAttributedString(
             string: "Enter your email",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray, NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
@@ -82,7 +82,7 @@ extension HomeView: HomeViewProtocol {
         passwordTextField.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.75).isActive = true
         passwordTextField.heightAnchor.constraint(equalTo: emailTextField.heightAnchor).isActive = true
         
-        passwordTextField.configureLoginTextField()
+        passwordTextField.configureStandardUITextField()
         passwordTextField.attributedPlaceholder = NSAttributedString(
             string: "Enter your password",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray, NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
@@ -98,10 +98,7 @@ extension HomeView: HomeViewProtocol {
         signUpButton.widthAnchor.constraint(equalTo: emailTextField.widthAnchor, multiplier: 0.49).isActive = true
         signUpButton.heightAnchor.constraint(equalTo: emailTextField.heightAnchor).isActive = true
         
-        signUpButton.layer.cornerRadius = 10
-        signUpButton.setTitle("Sign up", for: .normal)
-        signUpButton.setTitleColor(.white, for: .normal)
-        signUpButton.backgroundColor = .blue
+        signUpButton.configureStandardUIButton(title: "Sign up", backColor: .blue)
         
         signUpButton.addTarget(self, action: #selector(signUpButtonAction), for: .touchUpInside)
     }
@@ -115,10 +112,7 @@ extension HomeView: HomeViewProtocol {
         logInButton.widthAnchor.constraint(equalTo: emailTextField.widthAnchor, multiplier: 0.49).isActive = true
         logInButton.heightAnchor.constraint(equalTo: emailTextField.heightAnchor).isActive = true
         
-        logInButton.layer.cornerRadius = 10
-        logInButton.setTitle("Log in", for: .normal)
-        logInButton.setTitleColor(.white, for: .normal)
-        logInButton.backgroundColor = .blue
+        logInButton.configureStandardUIButton(title: "Log in", backColor: .blue)
         
         logInButton.addTarget(self, action: #selector(logInButtonAction), for: .touchUpInside)
     }
@@ -132,11 +126,9 @@ extension HomeView: HomeViewProtocol {
         googleButton.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.75).isActive = true
         googleButton.heightAnchor.constraint(equalTo: emailTextField.heightAnchor).isActive = true
         
-        googleButton.layer.cornerRadius = 10
-        googleButton.setTitle("Google", for: .normal)
+        googleButton.configureStandardUIButton(title: "Google", backColor: .white)
         googleButton.setImage(UIImage(named: "Google_icon"), for: .normal)
         googleButton.setTitleColor(.blue, for: .normal)
-        googleButton.backgroundColor = .white
         
         googleButton.addTarget(self, action: #selector(googleButtonAction), for: .touchUpInside)
     }

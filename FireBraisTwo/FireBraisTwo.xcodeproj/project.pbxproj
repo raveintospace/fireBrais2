@@ -54,6 +54,7 @@
 		341531352986EC5400AD7277 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 341531342986EC5400AD7277 /* FirebaseStorage */; };
 		341531372986EC5400AD7277 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 341531362986EC5400AD7277 /* FirebaseStorageCombine-Community */; };
 		341531392986EF3B00AD7277 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341531382986EF3B00AD7277 /* UITextFieldExtensions.swift */; };
+		345C747E2989845200036528 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345C747D2989845200036528 /* UIButtonExtensions.swift */; };
 		84E0372A951F03C82F323550 /* Pods_FireBraisTwo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D27944A6CD6069E2365E5A8 /* Pods_FireBraisTwo.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		341530FD2986E5B800AD7277 /* LogedWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogedWireFrame.swift; sourceTree = "<group>"; };
 		341530FF2986E9B500AD7277 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		341531382986EF3B00AD7277 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
+		345C747D2989845200036528 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		6D27944A6CD6069E2365E5A8 /* Pods_FireBraisTwo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FireBraisTwo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC35A4DB1B0EB5E5ACD26CE2 /* Pods-FireBraisTwo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireBraisTwo.debug.xcconfig"; path = "Target Support Files/Pods-FireBraisTwo/Pods-FireBraisTwo.debug.xcconfig"; sourceTree = "<group>"; };
 		E5EAF02F21ED56D9B976E50A /* Pods-FireBraisTwo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireBraisTwo.release.xcconfig"; path = "Target Support Files/Pods-FireBraisTwo/Pods-FireBraisTwo.release.xcconfig"; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				341531382986EF3B00AD7277 /* UITextFieldExtensions.swift */,
+				345C747D2989845200036528 /* UIButtonExtensions.swift */,
 			);
 			path = UIElementsExtensions;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				341530F42986E58200AD7277 /* LogedInteractor.swift in Sources */,
 				341530FE2986E5B800AD7277 /* LogedWireFrame.swift in Sources */,
 				341530EF2986E4B400AD7277 /* HomeWireFrame.swift in Sources */,
+				345C747E2989845200036528 /* UIButtonExtensions.swift in Sources */,
 				341530F62986E58C00AD7277 /* LogedPresenter.swift in Sources */,
 				341530E52986E47A00AD7277 /* HomeInteractor.swift in Sources */,
 			);

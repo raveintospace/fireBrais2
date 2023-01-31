@@ -8,7 +8,7 @@
 import UIKit
 
 extension UITextField {
-    func configureLoginTextField() {
+    func configureStandardUITextField() {
         backgroundColor = .white
         textColor = .black
         textAlignment = .center

@@ -26,6 +26,9 @@ final class LogedView: UIViewController {
     let providerLabel = UILabel()
     let addressTextField = UITextField()
     let phoneTextField = UITextField()
+    let saveButton = UIButton()
+    let loadButton = UIButton()
+    let deleteButton = UIButton()
     let logoutButton = UIButton()
     
     var provider: ProviderType?
@@ -52,6 +55,9 @@ extension LogedView: LogedViewProtocol {
         setupProviderLabel()
         setupAddressTextField()
         setupPhoneTextField()
+        setupSaveButton()
+        setupLoadButton()
+        setupDeleteButton()
         setupLogoutButton()
     }
     
@@ -88,31 +94,77 @@ extension LogedView: LogedViewProtocol {
         addressTextField.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.75).isActive = true
         addressTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
      
-        addressTextField.configureLoginTextField()
+        addressTextField.configureStandardUITextField()
         addressTextField.attributedPlaceholder = NSAttributedString(
-            string: "Enter your address",
+            string: " Enter your address",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray, NSAttributedString.Key.paragraphStyle: leftParagraphStyle])
         addressTextField.textAlignment = .left
         addressTextField.autocorrectionType = .no
     }
         
     func setupPhoneTextField() {
+        view.addSubview(phoneTextField)
         
+        phoneTextField.translatesAutoresizingMaskIntoConstraints = false
+        phoneTextField.topAnchor.constraint(equalTo: addressTextField.bottomAnchor, constant: 3).isActive = true
+        phoneTextField.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
+        phoneTextField.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.75).isActive = true
+        phoneTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+     
+        phoneTextField.configureStandardUITextField()
+        phoneTextField.attributedPlaceholder = NSAttributedString(
+            string: " Enter your phone number",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray, NSAttributedString.Key.paragraphStyle: leftParagraphStyle])
+        phoneTextField.textAlignment = .left
+        phoneTextField.autocorrectionType = .no
+    }
+    
+    func setupSaveButton() {
+        view.addSubview(saveButton)
+        
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        saveButton.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: 6).isActive = true
+        saveButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
+        saveButton.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.75).isActive = true
+        saveButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        saveButton.configureStandardUIButton(title: "Save", backColor: .systemGreen)
+    }
+    
+    func setupLoadButton() {
+        view.addSubview(loadButton)
+        
+        loadButton.translatesAutoresizingMaskIntoConstraints = false
+        loadButton.topAnchor.constraint(equalTo: saveButton.bottomAnchor, constant: 6).isActive = true
+        loadButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
+        loadButton.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.75).isActive = true
+        loadButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        loadButton.configureStandardUIButton(title: "Load", backColor: .systemGreen)
+    }
+    
+    func setupDeleteButton() {
+        view.addSubview(deleteButton)
+        
+        deleteButton.translatesAutoresizingMaskIntoConstraints = false
+        deleteButton.topAnchor.constraint(equalTo: loadButton.bottomAnchor, constant: 6).isActive = true
+        deleteButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
+        deleteButton.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.75).isActive = true
+        deleteButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        deleteButton.configureStandardUIButton(title: "Delete", backColor: .systemRed)
     }
     
     func setupLogoutButton() {
         view.addSubview(logoutButton)
         
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
-        logoutButton.topAnchor.constraint(equalTo: addressTextField.bottomAnchor, constant: 6).isActive = true
+        logoutButton.topAnchor.constraint(equalTo: deleteButton.bottomAnchor, constant: 18).isActive = true
         logoutButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
         logoutButton.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.75).isActive = true
         logoutButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        logoutButton.layer.cornerRadius = 10
-        logoutButton.setTitle("Log out", for: .normal)
-        logoutButton.setTitleColor(.white, for: .normal)
-        logoutButton.backgroundColor = .orange
+        logoutButton.configureStandardUIButton(title: "Log out", backColor: .orange)
         
         logoutButton.addTarget(self, action: #selector(logoutButtonAction), for: .touchUpInside)
     }
