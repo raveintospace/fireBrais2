@@ -129,6 +129,8 @@ extension LogedView: LogedViewProtocol {
         saveButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         saveButton.configureStandardUIButton(title: "Save", backColor: .systemGreen)
+        
+        saveButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
     }
     
     func setupLoadButton() {
@@ -141,6 +143,8 @@ extension LogedView: LogedViewProtocol {
         loadButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         loadButton.configureStandardUIButton(title: "Load", backColor: .systemGreen)
+        
+        loadButton.addTarget(self, action: #selector(loadButtonAction), for: .touchUpInside)
     }
     
     func setupDeleteButton() {
@@ -153,6 +157,8 @@ extension LogedView: LogedViewProtocol {
         deleteButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         deleteButton.configureStandardUIButton(title: "Delete", backColor: .systemRed)
+        
+        deleteButton.addTarget(self, action: #selector(deleteButtonAction), for: .touchUpInside)
     }
     
     func setupLogoutButton() {
@@ -170,6 +176,18 @@ extension LogedView: LogedViewProtocol {
     }
     
     // MARK: - UIButton Actions
+    
+    @objc func saveButtonAction() {
+        view.endEditing(true)           // edit not available when button is pushed
+    }
+    
+    @objc func loadButtonAction() {
+        view.endEditing(true)
+    }
+    
+    @objc func deleteButtonAction() {
+        view.endEditing(true)
+    }
     
     @objc func logoutButtonAction() {
         
