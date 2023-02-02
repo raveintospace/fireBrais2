@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import FirebaseAnalytics
 import FirebaseAuth
-import GoogleSignIn
 import FirebaseRemoteConfig
 
 final class HomeView: UIViewController {
@@ -44,7 +43,7 @@ final class HomeView: UIViewController {
         remoteConfig.configSettings = settings
         remoteConfig.setDefaults(["show_logout_button":NSNumber(true),
                                   "logout_button_text":NSString("Log out -no remote config-")])
-        
+               
         // Check auth user's session
         presenter?.checkInteractorIfDataExists()
     }

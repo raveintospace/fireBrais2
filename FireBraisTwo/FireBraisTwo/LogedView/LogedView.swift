@@ -243,7 +243,7 @@ extension LogedView: LogedViewProtocol {
             do {
                 try Auth.auth().signOut()
                 delegate.logoutButtonWasPressed()
-                presenter?.goBackToHomeView() // ask homeinteractor to remove data
+                presenter?.goBackToHomeView()
             } catch {
                 print("An error happened with case basic")
             }
