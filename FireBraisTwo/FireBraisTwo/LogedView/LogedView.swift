@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseRemoteConfig
 
 enum ProviderType: String {
     case basic
@@ -16,7 +17,7 @@ enum ProviderType: String {
 }
 
 final class LogedView: UIViewController {
-
+    
     // MARK: - Properties
     var presenter: LogedPresenterProtocol?
     var delegate: LogoutProtocol!
@@ -38,11 +39,25 @@ final class LogedView: UIViewController {
     private let db = Firestore.firestore()  // instance to connect with our database
     
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
         view.backgroundColor = UIColor(red: 236/255, green: 239/255, blue: 241/255, alpha: 1)
+        
+        // Remote config with Firebase
+        let remoteConfig = RemoteConfig.remoteConfig()
+        remoteConfig.fetchAndActivate { (status, error) in
+            if status != .error {
+                let showLogoutButton = remoteConfig.configValue(forKey: "show_logout_button").boolValue
+                let logoutButtonText = remoteConfig.configValue(forKey: "logout_button_text").stringValue
+                
+                DispatchQueue.main.async {
+                    self.logoutButton.isHidden = !showLogoutButton
+                    self.logoutButton.setTitle(logoutButtonText, for: .normal)
+                }
+            }
+        }
     }
 }
 
@@ -173,7 +188,7 @@ extension LogedView: LogedViewProtocol {
         logoutButton.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.75).isActive = true
         logoutButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        logoutButton.configureStandardUIButton(title: "Log out", backColor: .orange)
+        logoutButton.configureStandardUIButton(title: "Log out -no remote config-", backColor: .orange)
         
         logoutButton.addTarget(self, action: #selector(logoutButtonAction), for: .touchUpInside)
     }

@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAnalytics
 import FirebaseAuth
 import GoogleSignIn
+import FirebaseRemoteConfig
 
 final class HomeView: UIViewController {
     
@@ -34,6 +35,15 @@ final class HomeView: UIViewController {
         
         // Analytics event
         Analytics.logEvent("InitScreen", parameters: ["message": "Firebase integration complete"])
+        
+        // Remote config with firebase
+        let settings = RemoteConfigSettings()
+        settings.minimumFetchInterval = 60          // 60 seconds, normally 12 hours
+        
+        let remoteConfig = RemoteConfig.remoteConfig()
+        remoteConfig.configSettings = settings
+        remoteConfig.setDefaults(["show_logout_button":NSNumber(true),
+                                  "logout_button_text":NSString("Log out -no remote config-")])
         
         // Check auth user's session
         presenter?.checkInteractorIfDataExists()
