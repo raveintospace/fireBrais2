@@ -193,6 +193,19 @@ extension LogedView: LogedViewProtocol {
     
     @objc func loadButtonAction() {
         view.endEditing(true)
+        
+        db.collection("users").document(email ?? "").getDocument {
+            (DocumentSnapshot, error) in
+            
+            if let document = DocumentSnapshot, error == nil {  // data has been recovered
+                if let address = document.get("address") as? String {
+                    self.addressTextField.text = address
+                }
+                if let phone = document.get("phone") as? String {
+                    self.phoneTextField.text = phone
+                }
+            }
+        }
     }
     
     @objc func deleteButtonAction() {
