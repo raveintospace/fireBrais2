@@ -200,16 +200,25 @@ extension LogedView: LogedViewProtocol {
             if let document = DocumentSnapshot, error == nil {  // data has been recovered
                 if let address = document.get("address") as? String {
                     self.addressTextField.text = address
+                } else {
+                    self.addressTextField.text = ""     // no address but there's a phone
                 }
                 if let phone = document.get("phone") as? String {
                     self.phoneTextField.text = phone
+                } else {
+                    self.phoneTextField.text = ""       // no phone but there's an address
                 }
+            } else {        // data hasn't been recovered
+                self.addressTextField.text = ""
+                self.phoneTextField.text = ""
             }
         }
     }
     
     @objc func deleteButtonAction() {
         view.endEditing(true)
+        
+        db.collection("users").document(email ?? "").delete()
     }
     
     @objc func logoutButtonAction() {
