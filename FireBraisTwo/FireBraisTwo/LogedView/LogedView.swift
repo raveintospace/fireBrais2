@@ -35,6 +35,8 @@ final class LogedView: UIViewController {
     var provider: ProviderType?
     var email: String?
     
+    private let db = Firestore.firestore()  // instance to connect with our database
+    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -180,6 +182,13 @@ extension LogedView: LogedViewProtocol {
     
     @objc func saveButtonAction() {
         view.endEditing(true)           // edit not available when button is pushed
+        
+        if let email = email, let provider = provider {
+            db.collection("users").document(email).setData([
+                "provider":provider.rawValue,
+                "address":addressTextField.text ?? "",
+                "phone":phoneTextField.text ?? ""])
+        }
     }
     
     @objc func loadButtonAction() {
