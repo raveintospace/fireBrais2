@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseRemoteConfig
+import FirebaseCrashlytics
 
 enum ProviderType: String {
     case basic
@@ -32,6 +33,7 @@ final class LogedView: UIViewController {
     let loadButton = UIButton()
     let deleteButton = UIButton()
     let logoutButton = UIButton()
+    let errorButton = UIButton()
     
     var provider: ProviderType?
     var email: String?
@@ -77,6 +79,7 @@ extension LogedView: LogedViewProtocol {
         setupLoadButton()
         setupDeleteButton()
         setupLogoutButton()
+        setupErrorButton()
     }
     
     func setupemailLabel() {
@@ -193,6 +196,26 @@ extension LogedView: LogedViewProtocol {
         logoutButton.addTarget(self, action: #selector(logoutButtonAction), for: .touchUpInside)
     }
     
+    func setupErrorButton() {
+        view.addSubview(errorButton)
+        
+        errorButton.translatesAutoresizingMaskIntoConstraints = false
+        errorButton.topAnchor.constraint(equalTo: logoutButton.bottomAnchor, constant: 18).isActive = true
+        errorButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor).isActive = true
+        errorButton.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.75).isActive = true
+        errorButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        errorButton.configureStandardUIButton(title: "Error button", backColor: .systemIndigo)
+        
+        errorButton.addTarget(self, action: #selector(errorButtonAction), for: .touchUpInside)
+        
+        // Crashlytics
+        Crashlytics.crashlytics().setUserID(email)  // send user id
+        Crashlytics.crashlytics().setCustomValue(provider, forKey: "Provider") // send custom keys
+        Crashlytics.crashlytics().log("Error button was pushed")    // send error logs
+        
+    }
+    
     // MARK: - UIButton Actions
     
     @objc func saveButtonAction() {
@@ -250,6 +273,11 @@ extension LogedView: LogedViewProtocol {
         case .none:
             print("case none")
         }
+    }
+    
+    @objc func errorButtonAction() {
+        let errorNumbers = [0]
+        let _ = errorNumbers[1]
     }
     
     // MARK: - View data configuration
